@@ -32,13 +32,15 @@
             button_pilih_citra = new Button();
             comboBox_algoritma = new ComboBox();
             button_cari = new Button();
+            pictureBox_input = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_input).BeginInit();
             SuspendLayout();
             // 
             // label_title
             // 
             label_title.AutoSize = true;
             label_title.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_title.Location = new Point(90, 9);
+            label_title.Location = new Point(194, 33);
             label_title.Name = "label_title";
             label_title.Size = new Size(650, 35);
             label_title.TabIndex = 0;
@@ -49,7 +51,7 @@
             // button_pilih_citra
             // 
             button_pilih_citra.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button_pilih_citra.Location = new Point(48, 304);
+            button_pilih_citra.Location = new Point(42, 496);
             button_pilih_citra.Name = "button_pilih_citra";
             button_pilih_citra.Size = new Size(138, 43);
             button_pilih_citra.TabIndex = 1;
@@ -61,8 +63,8 @@
             // 
             comboBox_algoritma.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             comboBox_algoritma.FormattingEnabled = true;
-            comboBox_algoritma.Items.AddRange(new object[] { "KM", "BMP" });
-            comboBox_algoritma.Location = new Point(218, 304);
+            comboBox_algoritma.Items.AddRange(new object[] { "KMP", "BM" });
+            comboBox_algoritma.Location = new Point(212, 496);
             comboBox_algoritma.Name = "comboBox_algoritma";
             comboBox_algoritma.Size = new Size(214, 43);
             comboBox_algoritma.TabIndex = 2;
@@ -72,7 +74,7 @@
             // button_cari
             // 
             button_cari.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button_cari.Location = new Point(463, 303);
+            button_cari.Location = new Point(457, 495);
             button_cari.Name = "button_cari";
             button_cari.Size = new Size(80, 43);
             button_cari.TabIndex = 3;
@@ -80,11 +82,21 @@
             button_cari.UseVisualStyleBackColor = true;
             button_cari.Click += button_cari_Click;
             // 
+            // pictureBox_input
+            // 
+            pictureBox_input.Location = new Point(42, 102);
+            pictureBox_input.Name = "pictureBox_input";
+            pictureBox_input.Size = new Size(270, 360);
+            pictureBox_input.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox_input.TabIndex = 4;
+            pictureBox_input.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1062, 673);
+            Controls.Add(pictureBox_input);
             Controls.Add(button_cari);
             Controls.Add(comboBox_algoritma);
             Controls.Add(button_pilih_citra);
@@ -92,6 +104,7 @@
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox_input).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -102,5 +115,6 @@
         private Button button_pilih_citra;
         private ComboBox comboBox_algoritma;
         private Button button_cari;
+        private PictureBox pictureBox_input;
     }
 }
