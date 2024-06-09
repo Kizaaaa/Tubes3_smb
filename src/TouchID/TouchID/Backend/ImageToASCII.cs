@@ -12,64 +12,50 @@ namespace TouchID.Backend
     {
         public static BitArray bitmapToBinary(string filePath)
         {
-            /*Bitmap bmp = new Bitmap(filePath);
-            int width = bmp.Width;
-            int height = bmp.Height;
-            int length = width * height / 6;
-            int remainder = length%8;
-
-            BitArray binaryData = new BitArray(length);
-
-            int index = 0;
-            for (int y = 0; y < height; y+=6)
-            {
-                for (int x = 0; x < width; x++)
-                {
-                    int totalBrightness = 0;
-                    for (int blockX = x; blockX < Math.Min(x + 6, width); blockX++)
-                    {
-                        Color color = bmp.GetPixel(blockX, y);
-                        totalBrightness += (color.R + color.G + color.B) / 3;
-                    }
-                    int avgBrightness = totalBrightness / 6;
-                    binaryData[index++] = (avgBrightness >= 128);
-                }
-            }
-
-            for (int i = length; i < remainder ; i++){
-                binaryData[i] = false;
-            }
-
-            return binaryData;*/
             Bitmap bmp = new Bitmap(filePath);
             int width = bmp.Width;
             int height = bmp.Height;
 
-            int numberOfBlocks = width * (height / 6);
-            BitArray binaryData = new BitArray(numberOfBlocks);
+            int numberOfBlocks = width * height / 6;
+            int remainder = (numberOfBlocks / 8) % 8;
+            BitArray binaryData = new BitArray(numberOfBlocks + remainder * 8);
 
-            int index = 0;
-            for (int y = 0; y < height; y += 6)
+            int idx = 0;
+
+            //Color test = bmp.GetPixel(width - 1 , height - 1);
+            //Color test1 = bmp.GetPixel(width, height - 1);
+            //Color test2 = bmp.GetPixel(width - 1, height);
+            //Color test3 = bmp.GetPixel(width, height);
+
+            for (int i = 0; i < height; i++)
             {
-                for (int x = 0; x < width; x++)
+                for (int j = 0; j < width; j += 6)
                 {
                     int totalBrightness = 0;
                     int count = 0;
-                    for (int blockY = y; blockY < Math.Min(y + 6, height); blockY++)
+
+                    for (int k = j; k < Math.Min(j + 6, width); k++)
                     {
-                        Color color = bmp.GetPixel(x, blockY);
+                        Color color = bmp.GetPixel(k, i);
                         totalBrightness += (color.R + color.G + color.B) / 3;
                         count++;
                     }
+
                     int avgBrightness = totalBrightness / count;
-                    binaryData[index++] = (avgBrightness >= 128);
+                    binaryData[idx] = (avgBrightness >= 128);
+                    idx++;
                 }
             }
+
+            for (int i = numberOfBlocks; i < binaryData.Length; i++)
+            {
+                binaryData[idx] = false;
+            };
 
             return binaryData;
         }
 
-        public static string binaryToASCII(BitArray bitarr){ //bit array should always be divisble by 8
+        public static string binaryToASCII(BitArray bitarr){
             int len = bitarr.Length / 8;
             byte[] bytes = new byte[len];
             
