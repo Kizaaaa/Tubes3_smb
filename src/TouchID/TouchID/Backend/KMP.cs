@@ -59,19 +59,19 @@ namespace TouchID.Backend
             return -1;
         }
 
-        //public static void Main(string[] args)
-        //{
-        //    string pattern = "ABABAC";
-        //    string text = "ABABABCDADABABACBD";
+        public static void Main(string[] args)
+        {
+            string pattern = "ABABAC";
+            string text = "ABABABCDADABABACBD";
 
-        //    int[] borderresult = borderFunction(pattern);
-        //    int resultsearch = kmpFunction(pattern, text);
-        //    Console.WriteLine($"Pattern: {pattern}");
-        //    Console.Write("Border function: ");
-        //    foreach (int value in borderresult)
-        //    {
-        //        Console.Write(value + " ");
-        //    }
-        //}
+            int[] borderresult = borderFunction(pattern);
+            int resultsearch = kmpFunction(pattern, text);
+            Console.WriteLine($"Pattern: {pattern}");
+            Console.Write("Border function: ");
+            foreach (int value in borderresult)
+            {
+                //Console.Write(value + " ");
+            }
+        }
     }   
 }

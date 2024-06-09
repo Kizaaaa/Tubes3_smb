@@ -30,21 +30,33 @@ namespace TouchID.Backend
         public static string tingkatKemiripan(string s1, string s2){
             int l1 = s1.Length;
             int l2 = s2.Length;
+            Console.WriteLine(l1 + " " + l2);
             float result = 0;
 
-            if (l1>l2){
-                l1=l2;
-                int hd = hammingDistance(s1.Substring(0,l2),s2);
-                result = (l2 - hd) / l2;
+            if (l1 > l2)
+            {
+                l1 = l2;
+                int hd = hammingDistance(s1.Substring(0, l2), s2);
+                result = (float) (l2 - hd) / l2;
             }
-            if (l1<l2){
-                l2=l1;
-                int hd = hammingDistance(s1,s2.Substring(0,l1));
-                result = (l1 - hd) / l1;
+            else
+            {
+                l2 = l1;
+                int hd = hammingDistance(s1, s2.Substring(0, l1));
+                result = (float) (l1 - hd) / l1;
             }
 
-            
             return (String.Format("{0:F2}%", result*100));
         }
+
+        //public static void Main(string[] args)
+        //{
+        //    string pattern = "ABABAC";
+        //    string text = "ABABABCDADABABACBD";
+
+        //    string resultsearch = tingkatKemiripan(pattern, text);
+        //    Console.WriteLine($"Pattern: {resultsearch}");
+            
+        //}
     }
 }
