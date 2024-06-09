@@ -11,7 +11,8 @@ namespace TouchID.Backend
     {
         public static string regexNoVowel(string nama, string[] names)
         {
-            string patternNama = @"\b" + Regex.Escape(nama) + @"\b";
+            string patternNama = numberIntoVowel(nama);
+            patternNama = @"\b" + Regex.Escape(nama) + @"\b";
 
             foreach (string entry in names)
             {
@@ -23,5 +24,14 @@ namespace TouchID.Backend
             }
             return null;
         }
+
+        public static string numberIntoVowel(string nama)
+        {
+            nama = Regex.Replace(nama, "0", "o");
+            nama = Regex.Replace(nama, "1", "i");
+            nama = Regex.Replace(nama, "3", "e");
+            nama = Regex.Replace(nama, "4", "a");
+            return nama;
+        }   
     }
 }
