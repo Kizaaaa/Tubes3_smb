@@ -10,8 +10,8 @@ namespace TouchID
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            Console.WriteLine("test");
-            Console.ReadKey();
+            /*Console.WriteLine("test");
+            Console.ReadKey();*/
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
         }

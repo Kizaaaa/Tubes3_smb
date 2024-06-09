@@ -37,7 +37,7 @@ namespace TouchID.Backend
             }
 
             for (int i = length; i < remainder ; i++){
-                binaryData[i] = 0;
+                binaryData[i] = false;
             }
 
             return binaryData;
@@ -51,14 +51,13 @@ namespace TouchID.Backend
             {
                 for (int bit = 0; bit < 8; bit++)
                 {
-                    if (bits.Get(i * 8 + bit))
+                    if (bitarr.Get(i * 8 + bit))
                     {
                         bytes[i] |= (byte)(1 << (7 - bit));
                     }
                 }
             }
+            return System.Text.Encoding.ASCII.GetString(bytes);
         }
-
-        return System.Text.Encoding.ASCII.GetString(bytes);
     }
 }

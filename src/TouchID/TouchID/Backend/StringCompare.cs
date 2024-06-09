@@ -30,16 +30,17 @@ namespace TouchID.Backend
         public static string tingkatKemiripan(string s1, string s2){
             int l1 = s1.Length;
             int l2 = s2.Length;
+            float result = 0;
 
             if (l1>l2){
                 l1=l2;
                 int hd = hammingDistance(s1.Substring(0,l2),s2);
-                float result = (l2 - hd) / l2;
+                result = (l2 - hd) / l2;
             }
             if (l1<l2){
                 l2=l1;
                 int hd = hammingDistance(s1,s2.Substring(0,l1));
-                float result = (l1 - hd) / l1;
+                result = (l1 - hd) / l1;
             }
 
             
