@@ -29,8 +29,10 @@ namespace TouchID.Backend
         {
             nama = Regex.Replace(nama, "0", "o");
             nama = Regex.Replace(nama, "1", "i");
+            nama = Regex.Replace(nama, "2", "z");
             nama = Regex.Replace(nama, "3", "e");
             nama = Regex.Replace(nama, "4", "a");
+            nama = Regex.Replace(nama, "5", "s");
             nama = Regex.Replace(nama, "6", "g");
             return nama;
         }   

@@ -15,7 +15,7 @@ namespace TouchID.Backend
             int[] border = new int[m];
             int j = 0;
             int i = 1;
-
+            border[0] = 0;
             while (i < m){
                 if (pattern[j] == pattern[i]) {
                     border[i] = j + 1;
