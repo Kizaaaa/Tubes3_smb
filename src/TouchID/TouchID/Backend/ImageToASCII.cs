@@ -43,7 +43,7 @@ namespace TouchID.Backend
             return binaryData;
         }
 
-        public static char[] binaryToASCII(BitArray bitarr){ //bit array should always be divisble by 8
+        public static string binaryToASCII(BitArray bitarr){ //bit array should always be divisble by 8
             int len = bitarr.Length / 8;
             byte[] bytes = new byte[len];
             
