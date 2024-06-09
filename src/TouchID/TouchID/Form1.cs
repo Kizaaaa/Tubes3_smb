@@ -1,3 +1,4 @@
+using System.Drawing;
 using TouchID.Backend;
 namespace TouchID
 {
@@ -9,6 +10,7 @@ namespace TouchID
         {
             InitializeComponent();
             pictureBox_input.Image = Properties.Resources.default_pictureBox_input;
+            pictureBox_result.Image = Properties.Resources.default_pictureBox_input;
             sudahInput = false;
         }
 
@@ -64,6 +66,7 @@ namespace TouchID
             }
             else
             {
+                pictureBox_result.Image = new Bitmap(imagePath);
                 pilihanAlgoritma = comboBox_algoritma.SelectedItem.ToString();
                 string pattern = ImageToASCII.binaryToASCII(ImageToASCII.bitmapToBinary(imagePath));
                 string text = ImageToASCII.binaryToASCII(ImageToASCII.bitmapToBinary(imagePath));

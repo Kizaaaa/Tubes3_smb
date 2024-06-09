@@ -33,7 +33,9 @@
             comboBox_algoritma = new ComboBox();
             button_cari = new Button();
             pictureBox_input = new PictureBox();
+            pictureBox_result = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox_input).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_result).BeginInit();
             SuspendLayout();
             // 
             // label_title
@@ -91,11 +93,21 @@
             pictureBox_input.TabIndex = 4;
             pictureBox_input.TabStop = false;
             // 
+            // pictureBox_result
+            // 
+            pictureBox_result.Location = new Point(399, 102);
+            pictureBox_result.Name = "pictureBox_result";
+            pictureBox_result.Size = new Size(270, 360);
+            pictureBox_result.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox_result.TabIndex = 5;
+            pictureBox_result.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1062, 673);
+            Controls.Add(pictureBox_result);
             Controls.Add(pictureBox_input);
             Controls.Add(button_cari);
             Controls.Add(comboBox_algoritma);
@@ -105,6 +117,7 @@
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox_input).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_result).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -116,5 +129,6 @@
         private ComboBox comboBox_algoritma;
         private Button button_cari;
         private PictureBox pictureBox_input;
+        private PictureBox pictureBox_result;
     }
 }
