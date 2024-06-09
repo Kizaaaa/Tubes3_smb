@@ -58,7 +58,7 @@ namespace TouchID
             int value;
             if (!sudahInput)
             {
-                MessageBox.Show("Silahkan masukkan sidik jari terlebih dahulu.");
+                MessageBox.Show("Silahkan masukkan sidik jari terlebih dahulu." + MyDB.TestConnection());
             }
             else if (comboBox_algoritma.SelectedItem == null)
             {
@@ -66,6 +66,7 @@ namespace TouchID
             }
             else
             {
+                
                 pictureBox_result.Image = new Bitmap(imagePath);
                 pilihanAlgoritma = comboBox_algoritma.SelectedItem.ToString();
                 string pattern = ImageToASCII.binaryToASCII(ImageToASCII.bitmapToBinary(imagePath));

@@ -1,3 +1,5 @@
+using TouchID.Backend;
+
 namespace TouchID
 {
     internal static class Program
@@ -12,7 +14,9 @@ namespace TouchID
             // see https://aka.ms/applicationconfiguration.
             /*Console.WriteLine("test");
             Console.ReadKey();*/
+            
             ApplicationConfiguration.Initialize();
+            
             Application.Run(new Form1());
         }
     }
