@@ -12,7 +12,7 @@ namespace TouchID.Backend
     {
         public static BitArray bitmapToBinary(string filePath)
         {
-            Bitmap bmp = new Bitmap(filePath);
+            /*Bitmap bmp = new Bitmap(filePath);
             int width = bmp.Width;
             int height = bmp.Height;
             int length = width * height / 6;
@@ -38,6 +38,32 @@ namespace TouchID.Backend
 
             for (int i = length; i < remainder ; i++){
                 binaryData[i] = false;
+            }
+
+            return binaryData;*/
+            Bitmap bmp = new Bitmap(filePath);
+            int width = bmp.Width;
+            int height = bmp.Height;
+
+            int numberOfBlocks = width * (height / 6);
+            BitArray binaryData = new BitArray(numberOfBlocks);
+
+            int index = 0;
+            for (int y = 0; y < height; y += 6)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    int totalBrightness = 0;
+                    int count = 0;
+                    for (int blockY = y; blockY < Math.Min(y + 6, height); blockY++)
+                    {
+                        Color color = bmp.GetPixel(x, blockY);
+                        totalBrightness += (color.R + color.G + color.B) / 3;
+                        count++;
+                    }
+                    int avgBrightness = totalBrightness / count;
+                    binaryData[index++] = (avgBrightness >= 128);
+                }
             }
 
             return binaryData;

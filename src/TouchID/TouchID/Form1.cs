@@ -1,8 +1,10 @@
+using TouchID.Backend;
 namespace TouchID
 {
     public partial class Form1 : Form
     {
         private bool sudahInput;
+        private string imagePath;
         public Form1()
         {
             InitializeComponent();
@@ -25,10 +27,11 @@ namespace TouchID
             try
             {
                 OpenFileDialog open = new OpenFileDialog();
-                open.Filter = "Image Files (*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
+                open.Filter = "Image Files (*.bmp; *.jpg; *.jpeg; *.png)|*.bmp; *.jpg; *.jpeg; *.png";
                 if (open.ShowDialog() == DialogResult.OK)
                 {
                     pictureBox_input.Image = new Bitmap(open.FileName);
+                    imagePath = open.FileName;
                     sudahInput = true;
                 }
                 else
@@ -49,7 +52,8 @@ namespace TouchID
 
         private void button_cari_Click(object sender, EventArgs e)
         {
-            string pilihanAlgoritma;
+            string pilihanAlgoritma, kemiripan;
+            int value;
             if (!sudahInput)
             {
                 MessageBox.Show("Silahkan masukkan sidik jari terlebih dahulu.");
@@ -61,14 +65,19 @@ namespace TouchID
             else
             {
                 pilihanAlgoritma = comboBox_algoritma.SelectedItem.ToString();
+                string pattern = ImageToASCII.binaryToASCII(ImageToASCII.bitmapToBinary(imagePath));
+                string text = ImageToASCII.binaryToASCII(ImageToASCII.bitmapToBinary(imagePath));
+                kemiripan = StringCompare.tingkatKemiripan(pattern, text);
                 if (pilihanAlgoritma == "KMP")
                 {
-                    MessageBox.Show("KMP dipilih");
+                    value = BM.bmFunction(pattern, text);
+                    MessageBox.Show("KMP Value: " + value + " Kemiripan: " + kemiripan);
                     /*Ini nanti diganti algoritma KMP*/
                 }
                 else if (pilihanAlgoritma == "BM")
                 {
-                    MessageBox.Show("BM dipilih");
+                    value = BM.bmFunction(pattern, text);
+                    MessageBox.Show("BM value: " + value + " Kemiripan: " + kemiripan);
                     /*Ini nanti diganti algoritma BM*/
                 }
             }
